@@ -1,25 +1,20 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Navbar } from "../components/Navbar";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const router = useRouter();
   return (
     <Container>
       <Head>
-        <title>Startuppario</title>
-        <meta
-          name="description"
-          content="Startuppario: Il vocabolario delle startup"
-        />
+        <title>BitRocket NextJS</title>
+        <meta name="description" content="BitRocket NextJS" />
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <title>Startuppario: Il vocabolario delle startup</title>
-        <meta
-          content="Startuppario, il vocabolario delle startup. Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
-          name="description"
-        />
+        <title>BitRocket NextJS</title>
+        <meta content="BitRocket with NextJS project" name="description" />
         <link rel="icon" href="favicon.ico" />
         <link
           rel="canonical"
@@ -31,13 +26,16 @@ const Home: NextPage = () => {
         />
       </Head>
 
-      <Navbar />
+      <div>
+        Home, guarda lo{" "}
+        <button onClick={() => router.push("./startuppario")}>
+          Startuppario
+        </button>
+      </div>
     </Container>
   );
 };
 
-const Container = styled.div`
-  background-color: #0b0c0b;
-`;
+const Container = styled.div({});
 
 export default Home;

@@ -39,17 +39,19 @@ const ViewIdStartuppario = () => {
       <button onClick={() => router.push("/")}>Home</button>
       <Container>
         <h2>{checkElement?.title}</h2>
-        <h3>{checkElement?.description}</h3>
+        <Description>{checkElement?.description}</Description>
       </Container>
     </>
   );
 };
 
 const Container = styled.div({
+  padding: "0 100px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
 });
+const Description = styled.h3({});
 
 export default ViewIdStartuppario;

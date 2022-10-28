@@ -6,9 +6,31 @@ import { Navbar } from "../../components/Navbar";
 import jsonData from "../../json/startuppario.json";
 
 const ViewStartuppario: NextPage = () => {
-  let sectionWord = "";
-  let isNewSection = false;
   const router = useRouter();
+
+  const word = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "Z",
+  ];
 
   return (
     <Container>
@@ -39,44 +61,58 @@ const ViewStartuppario: NextPage = () => {
       <Navbar />
 
       <div>
-        <ul>
-          {jsonData.map((el) => {
-            if (sectionWord !== el.sez) {
-              sectionWord = el.sez;
-              isNewSection = true;
-            } else isNewSection = false;
-            return (
-              <div>
-                {sectionWord === el.sez && isNewSection && (
+        {word.map((el, index) => {
+          return (
+            <>
+              <SectionContainer style={{ zIndex: index + 1 }}>
+                <Sticky>
                   <div>
-                    {/* <StickySection> */}
-                    <h1>{el.sez}</h1>
-                    <hr />
-                    {/* </StickySection> */}
+                    <SectionLabel>{el}</SectionLabel>
                   </div>
-                )}
-                <WrapperTitle>
-                  <h2 onClick={() => router.push(`./startuppario/${el.id}`)}>
-                    {el.title}
-                  </h2>
-                </WrapperTitle>
-              </div>
-            );
-          })}
-        </ul>
+                  <hr />
+                </Sticky>
+              </SectionContainer>
+
+              <h2>
+                {jsonData.map((obj) => {
+                  if (obj.sez === el)
+                    return (
+                      <WrapperTitle
+                        onClick={() => router.push(`./startuppario/${obj.id}`)}
+                      >
+                        {obj.title}
+                      </WrapperTitle>
+                    );
+                })}
+              </h2>
+            </>
+          );
+        })}
       </div>
     </Container>
   );
 };
 
 const Container = styled.div({});
-const StickySection = styled.div({
-  position: "sticky",
-  top: 0,
+const SectionLabel = styled.h1({
+  margin: 0,
 });
+const SectionContainer = styled.div({
+  fontSize: "2rem",
+  fontWeight: 900,
+  position: "sticky",
+  top: "200px",
+});
+
+const Sticky = styled.div({
+  fontSize: "2rem",
+  fontWeight: "900",
+  background: "#3c3c3b",
+});
+
 const WrapperTitle = styled.div({
   padding: "0 250px",
-  margin: "50px 0",
+  margin: "30px 0",
   cursor: "pointer",
   "&:hover": {
     color: "#ce2c38",

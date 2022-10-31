@@ -1,17 +1,11 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { Navbar } from "../components/Navbar";
 import jsonData from "../json/startuppario.json";
 
 const ViewStartuppario: NextPage = () => {
-  const router = useRouter();
-
-  const onViewDetail = (title: string) => {
-    return router.push(`./${title.replaceAll(" ", "-")}`);
-  };
-
   const word = [
     "A",
     "B",
@@ -42,14 +36,14 @@ const ViewStartuppario: NextPage = () => {
         <title>Startuppario</title>
         <meta
           name="description"
-          content="Startuppario: Il vocabolario delle startup"
+          content="Startuppario: Il vocabolario delle startup - Powered by BitRocket.dev https://www.bitrocket.dev/"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="favicon.ico" />
         <meta charSet="utf-8" />
         <script async src="https://cdn.ampproject.org/v0.js"></script>
         <title>Startuppario: Il vocabolario delle startup</title>
         <meta
-          content="Startuppario, il vocabolario delle startup. Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
+          content="Startuppario, il vocabolario delle startup. Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup. Powered by BitRocket.dev https://www.bitrocket.dev/"
           name="description"
         />
         <link rel="icon" href="favicon.ico" />
@@ -63,7 +57,6 @@ const ViewStartuppario: NextPage = () => {
         />
       </Head>
       <Navbar />
-
       <div>
         {word.map((el, index) => {
           return (
@@ -77,16 +70,21 @@ const ViewStartuppario: NextPage = () => {
                 </Sticky>
               </SectionContainer>
 
-              <h2>
+              <WrapperTitle>
                 {jsonData.map((obj) => {
                   if (obj.sez === el)
                     return (
-                      <WrapperTitle onClick={() => onViewDetail(obj.title)}>
-                        {obj.title}
-                      </WrapperTitle>
+                      <>
+                        <Title
+                          target={"_blank"}
+                          href={`./${obj.title.replaceAll(" ", "-")}`}
+                        >
+                          {obj.title}
+                        </Title>
+                      </>
                     );
                 })}
-              </h2>
+              </WrapperTitle>
             </>
           );
         })}
@@ -98,12 +96,13 @@ const ViewStartuppario: NextPage = () => {
 const Container = styled.div({});
 const SectionLabel = styled.h1({
   margin: 0,
+  padding: "0 50px",
 });
 const SectionContainer = styled.div({
   fontSize: "2rem",
   fontWeight: 900,
   position: "sticky",
-  top: "200px",
+  top: "240px",
 });
 
 const Sticky = styled.div({
@@ -112,14 +111,24 @@ const Sticky = styled.div({
   background: "#3c3c3b",
 });
 
-const WrapperTitle = styled.div({
+const Title = styled.a({
+  fontSize: "22px",
+  color: "whitesmoke",
+  textDecoration: "none",
   padding: "0 250px",
+  width: "100%",
   margin: "30px 0",
   cursor: "pointer",
   "&:hover": {
-    color: "#ce2c38",
-    boxShadow: "5px 5px 5px 0 #ce2c38",
+    color: "#b82335",
+    boxShadow: "5px 5px 5px 0 #b82335",
   },
+});
+const WrapperTitle = styled.div({
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  margin: "30px 0",
 });
 
 export default ViewStartuppario;

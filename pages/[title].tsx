@@ -1,16 +1,23 @@
 import styled from "@emotion/styled";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import jsonData from "../json/startuppario.json";
 
 const ViewIdStartuppario = () => {
+  const [stopLight, setStopLight] = useState(false);
   const router = useRouter();
   const { query } = useRouter();
-
   const checkElement = jsonData.find(
     (el) => el.title.replaceAll(" ", "-") === query.title
   );
+
+  useEffect(() => {
+    if (stopLight) {
+      if (checkElement === undefined) router.push("/");
+    } else setStopLight(true);
+  }, [query.title]);
 
   return (
     <>
@@ -38,7 +45,7 @@ const ViewIdStartuppario = () => {
           rel="stylesheet"
         />
       </Head>
-      <button onClick={() => router.push("/")}>Home</button>
+      <Link href={"/"}>Torna alla Home</Link>
       <Container>
         <h2>{checkElement?.title}</h2>
         <Description>{checkElement?.description}</Description>

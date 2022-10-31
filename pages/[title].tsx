@@ -2,13 +2,15 @@ import styled from "@emotion/styled";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
-import jsonData from "../../json/startuppario.json";
+import jsonData from "../json/startuppario.json";
 
 const ViewIdStartuppario = () => {
   const router = useRouter();
   const { query } = useRouter();
 
-  const checkElement = jsonData.find((el) => el.id.toString() === query.id);
+  const checkElement = jsonData.find(
+    (el) => el.title.replaceAll(" ", "-") === query.title
+  );
 
   return (
     <>

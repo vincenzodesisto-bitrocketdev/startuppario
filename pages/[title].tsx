@@ -45,11 +45,16 @@ const ViewIdStartuppario = () => {
           rel="stylesheet"
         />
       </Head>
-      <Link href={"/"}>Torna alla Home</Link>
-      <Container>
-        <h2>{checkElement?.title}</h2>
-        <Description>{checkElement?.description}</Description>
-      </Container>
+      <WrapperPage>
+        <HomeButton>
+          <LabelButton href={"/"}>Torna alla Home </LabelButton>
+        </HomeButton>
+
+        <Container>
+          <h2>{checkElement?.title}</h2>
+          <Description>{checkElement?.description}</Description>
+        </Container>
+      </WrapperPage>
     </>
   );
 };
@@ -61,6 +66,27 @@ const Container = styled.div({
   alignItems: "center",
   textAlign: "center",
 });
+const WrapperPage = styled.div({
+  padding: "20px",
+});
 const Description = styled.h3({});
+const LabelButton = styled.a({
+  textDecoration: "none",
+  color: "whitesmoke",
+  "&:hover": {
+    color: "whitesmoke",
+  },
+});
+const HomeButton = styled.button({
+  textDecoration: "none",
+  border: "1px solid black",
+  background: "#b82335",
+  padding: "10px",
+  "&:hover": {
+    background: "#cc5454",
+    border: "1px solid black",
+    boxShadow: "0px 0px 12px 0px #c22727",
+  },
+});
 
 export default ViewIdStartuppario;

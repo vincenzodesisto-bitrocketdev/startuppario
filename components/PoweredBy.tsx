@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 import srcLogo from "../assets/logoRocketWhite.png";
 
-export const PoweredBy = () => (
+export const PoweredBy: FC = (): JSX.Element => (
   <Container>
     <Label>
       Powered by
@@ -19,18 +19,24 @@ export const PoweredBy = () => (
   </Container>
 );
 
-const Container = styled.div({
+const Container = styled.div(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   fontSize: "10px",
-});
+  position: "fixed",
+  zIndex: "26",
+  bottom: "10px",
+  right: "10px",
+  backgroundColor: theme.background,
+  boxShadow: theme.field.boxShadow,
+}));
 const Label = styled.p({
   margin: "0 5px",
 });
-const WrapperPoweredBy = styled.a({
+const WrapperPoweredBy = styled.a(({ theme }) => ({
   textDecoration: "none",
-  color: "whitesmoke",
+  color: theme.text,
   margin: "0 5px",
   cursor: "pointer",
-});
+}));

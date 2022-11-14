@@ -1,56 +1,35 @@
 import styled from "@emotion/styled";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import jsonData from "../json/startuppario.json";
+import { TWord } from "../declaration/general";
+import apiWordDetail from "./api/apiWordDetail";
 
-const ViewIdStartuppario = () => {
-  const [stopLight, setStopLight] = useState(false);
+export const getServerSideProps: GetServerSideProps<{
+  wordDetail: TWord;
+}> = async (context) => {
+  const { title } = context.query;
+  const wordDetail = await apiWordDetail(title);
+
+  return { props: { wordDetail } };
+};
+
+const ViewIdStartuppario = ({
+  wordDetail,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
-  const { query } = useRouter();
-  const matchingData = jsonData.find(
-    (el) => el.title.replaceAll(" ", "-") === query.title
-  );
 
-  useEffect(() => {
-    if (stopLight) {
-      if (matchingData === undefined) router.push("/");
-    } else setStopLight(true);
-  }, [query.title]);
-
-  if (!matchingData) return;
+  if (!wordDetail) return null;
   return (
     <>
       <Head>
-        <title>Startuppario {matchingData?.title}</title>
-        <meta
-          name="description"
-          content="Startuppario: Il vocabolario delle startup"
-        />
-        <link rel="icon" href="/favicon.ico" />
-        <meta charSet="utf-8" />
-        <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <title>Startuppario: {matchingData?.title}</title>
-        <meta
-          content="Startuppario, il vocabolario delle startup. 
-          Impara tutti i termini chiave per fare bella figura e buoni affari nel mondo startup"
-          name="description"
-        />
-        <link rel="icon" href="favicon.ico" />
-        <link
-          rel="canonical"
-          href="http://example.ampproject.org/article-metadata.html"
-        />
-
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:300,900"
-          rel="stylesheet"
-        />
+        <title>Startuppario: {wordDetail.title}</title>
       </Head>
       <WrapperPage>
         <Container>
-          <ContainerTitle>{matchingData?.title}</ContainerTitle>
-          <Description>{matchingData?.description}</Description>
+          <Title>{wordDetail.title}</Title>
+          <Description>{wordDetail.description}</Description>
           <HomeButton title="torna alla home" onClick={() => router.push("/")}>
             Torna alla Home
           </HomeButton>
@@ -60,7 +39,7 @@ const ViewIdStartuppario = () => {
   );
 };
 
-const ContainerTitle = styled.h2({
+const Title = styled.h2({
   margin: "0",
 });
 

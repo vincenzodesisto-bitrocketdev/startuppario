@@ -66,13 +66,34 @@ const WrapperSection = styled.div({});
 const SectionLabel = styled.h1({
   margin: 0,
   padding: "16px 300px 0 300px",
+  "@media only screen and (max-width:480px)": {
+    padding: "16px 0 0 20px",
+    fontSize: "30px",
+  },
+  "@media only screen and (max-width:768px) and (min-width:481px)": {
+    padding: "16px 0 0 90px",
+    fontSize: "40px",
+  },
+  "@media only screen and (max-width:1024px) and (min-width:769px)": {
+    padding: "16px 0 0 200px",
+    fontSize: "50px",
+  },
 });
 const SectionContainer = styled.section(({ theme }) => ({
   fontSize: "2rem",
   fontWeight: 900,
   position: "sticky",
-  top: "240px",
+  top: "244px",
   background: theme.field.background,
+  "@media only screen and (max-width:480px)": {
+    top: "182px",
+  },
+  "@media only screen and (max-width:768px) and (min-width:481px)": {
+    top: "233px",
+  },
+  "@media only screen and (max-width:1024px) and (min-width:769px)": {
+    top: "264px",
+  },
 }));
 
 const TitleLink = styled.a(({ theme }) => ({
@@ -80,12 +101,26 @@ const TitleLink = styled.a(({ theme }) => ({
   color: theme.text,
   textDecoration: "none",
   paddingLeft: "300px",
-  width: "100%",
   margin: "30px 0",
   cursor: "pointer",
   fontWeight: "bold",
   "&:hover": {
     color: theme.home.textHover,
+  },
+  "@media only screen and (max-width:480px) ": {
+    paddingLeft: "20px",
+    margin: "20px 0",
+    fontSize: "20px",
+  },
+  "@media only screen and (max-width:768px) and (min-width:481px)": {
+    paddingLeft: "100px",
+    margin: "20px 0",
+    fontSize: "25px",
+  },
+  "@media only screen and (max-width:1024px) and (min-width:769px)": {
+    paddingLeft: "210px",
+    margin: "20px 0",
+    fontSize: "28px",
   },
 }));
 const WrapperTitle = styled.div({
@@ -93,6 +128,9 @@ const WrapperTitle = styled.div({
   flexDirection: "column",
   width: "100%",
   margin: "30px 0",
+  "@media only screen and (max-width:1024)": {
+    margin: "10px 0",
+  },
 });
 const Divider = styled.hr({
   backgroundColor: "#E1E1E1",

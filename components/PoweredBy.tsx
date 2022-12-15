@@ -30,6 +30,10 @@ const Container = styled.div(({ theme }) => ({
   right: "32px",
   backgroundColor: theme.background,
   boxShadow: theme.field.boxShadow,
+  "@media only screen and (max-width:1024)": {
+    bottom: "5px",
+    right: "5px",
+  },
 }));
 const Label = styled.p({
   margin: "0 5px",

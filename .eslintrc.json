@@ -3,11 +3,14 @@
     "browser": true,
     "es2021": true
   },
+  "settings": {
+    "react": { "version": "detect" },
+    "import/resolver": { "typescript": {} }
+  },
   "plugins": ["react", "import", "react-hooks", "@typescript-eslint"],
   "extends": [
     "plugin:react/recommended",
     "standard-with-typescript",
-    "airbnb-typescript",
     "eslint:recommended",
     "plugin:import/recommended",
     "plugin:@typescript-eslint/recommended"

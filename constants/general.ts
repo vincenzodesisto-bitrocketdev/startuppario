@@ -1,6 +1,6 @@
 export const IS_PRODUCTION = process.env.NODE_ENV === "production";
 export const BASE_PATH = IS_PRODUCTION
-  ? "https://startuppario.vercel.app"
+  ? "https://startuppario.it"
   : "http://localhost:3000";
 
 export const letterList = [

@@ -25,11 +25,11 @@ const ImageSize = styled.div({
     width: "50px",
     height: "50px",
   },
-  "@media only screen and (max-width:768px) and (min-width:481px)": {
+  "@media only screen and (max-width:840px) and (min-width:481px)": {
     width: "60px",
     height: "60px",
   },
-  "@media only screen and (max-width:1024px) and (min-width:769)": {
+  "@media only screen and (max-width:1024px) and (min-width:840)": {
     width: "70px",
     height: "70px",
   },
@@ -40,7 +40,7 @@ const Wrapper = styled.div(({ theme }) => ({
   top: 0,
   position: "sticky",
   backgroundColor: theme.navbar.background,
-  height: "200px",
+  maxHeight: "225px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -49,17 +49,14 @@ const Wrapper = styled.div(({ theme }) => ({
   borderBottom: theme.navbar.borderBottom,
   color: theme.text,
   "@media only screen and (max-width:480px)": {
-    height: "153px",
     justifyContent: "start",
     padding: "5px 20px 20px 20px",
   },
-  "@media only screen and (max-width:768px) and (min-width:481px)": {
-    height: "200px",
+  "@media only screen and (max-width:840px) and (min-width:481px)": {
     justifyContent: "start",
     padding: "10px 20px 20px 20px",
   },
-  "@media only screen and (max-width:1024px) and (min-width:769px)": {
-    height: "225px",
+  "@media only screen and (max-width:1024px) and (min-width:840px)": {
     justifyContent: "start",
     padding: "15px 20px 20px 20px",
   },
@@ -68,23 +65,25 @@ const Wrapper = styled.div(({ theme }) => ({
 const Title = styled.h1({
   margin: "0",
   fontSize: "48px",
+  textAlign: "center",
   "@media only screen and (max-width:480px)": {
     fontSize: "23px",
   },
-  "@media only screen and (max-width:768px) and (min-width:481px)": {
+  "@media only screen and (max-width:840px) and (min-width:481px)": {
     fontSize: "30px",
   },
-  "@media only screen and (max-width:1024px) and (min-width:769px)": {
+  "@media only screen and (max-width:1024px) and (min-width:840px)": {
     fontSize: "41px",
   },
 });
 
 const Description = styled.h2({
   fontWeight: "normal",
+  textAlign: "center",
   "@media only screen and (max-width:480px)": {
     fontSize: "16px",
   },
-  "@media only screen and (max-width:768px) and (min-width:481px)": {
+  "@media only screen and (max-width:840px) and (min-width:481px)": {
     fontSize: "20px",
   },
 });
